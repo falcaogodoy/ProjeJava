@@ -2,7 +2,7 @@ import NotificationButton from "../NotificationButton";
 import "./styles.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SalesCard() {
 
@@ -10,7 +10,9 @@ function SalesCard() {
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(new Date());
 
-
+    useEffect(() => {
+        console.log("TESTE")
+    }, [])
 
   return (
     <div className="principal-card">
