@@ -3,6 +3,9 @@ import "./styles.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { BASE_URL } from "../../utils/request";
+import { Sale } from "../../models/sale";
 
 function SalesCard() {
 
@@ -10,8 +13,14 @@ function SalesCard() {
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(new Date());
 
+
+    const [sales, setSales] = useState<Sale[]>([])
+
     useEffect(() => {
-        console.log("TESTE")
+        axios.get(`${BASE_URL}/sales`)
+        .then(response => {
+            setSales(response.data.content);
+        })
     }, [])
 
   return (
@@ -49,6 +58,13 @@ function SalesCard() {
             </tr>
           </thead>
           <tbody>
+            {
+                sales.map(sale => {
+                   return (
+                    
+                   ) 
+                })
+            }
             <tr>
               <td className="show-responsi992"> #01</td>
               <td className="data-show-responsi"> 08.08.08</td>
